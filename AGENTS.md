@@ -17,6 +17,7 @@ hermes/
   skills/<名>/SKILL.md Hermes 技能（源文件）；安装在 ~/.hermes/skills/autonomous-ai-agents/<名>/
     workshop/          车间派单（F5）
     progress/          项目进展现查（F6）
+    vault/             关于常浩的判断类问题先查 Vault（F3，用 MCP vault-read）
   prompts/             定时任务等用的提示词
   samples/             样稿
 ops/

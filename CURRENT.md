@@ -6,6 +6,23 @@
 
 ---
 
+## 2026-10-26 · M4 批 3：Hermes 读 Vault
+
+- 时间：开工 23:36
+- **决定**（常浩）：批 1 十题评价按 Claude 预评记（认可 1、部分认可 8、不认可 1），已写进基线表；接着做批 3。
+- **改动**（改前 `config.yaml`、`SOUL.md`、`memories/`、自带 obsidian 技能打包在 `evidence/M4-B3-20261026/hermes-before-B3.tgz`）：
+  - 接 MCP：`hermes mcp add vault-read`（stdio，`/usr/bin/python3 -I <Vault>/.claude/scripts/vault_mcp.py`，和 Claude、Codex 同一份），`hermes mcp test` 连通、发现 search / read 两个工具；在 Hermes 里叫 `mcp__vault_read__search`、`mcp__vault_read__read`。
+  - 新技能 `vault` 0.1.0：源文件 `hermes/skills/vault/SKILL.md`，安装在 `~/.hermes/skills/autonomous-ai-agents/vault/`。写死：判断类问题先查、卡片优先、个人上下文读全页、“未定”就说需要常浩定、回复给路径 + 小节、分清已确认 / 推断、只读。
+  - 停用 Hermes 自带的 `obsidian` 技能（`skills.disabled` 加一项；它带创建、编辑能力）。`hermes config set` 提示该键“未识别”，但 `hermes skills list` 显示 obsidian 已 disabled，生效。
+  - `~/.hermes/SOUL.md`「信息从哪来」Vault 那条后面加一句：判断类问题先按 vault 技能查、给路径、未定就直说。SOUL 没有仓库源文件，只改了安装位置。
+  - `USER.md` 追加一条指针（画像真源在 Vault，列出个人上下文、决定、卡片三处，注明阶段重点和时间预算是“未定”），原有条目不动。
+  - 网关 23:38 重启，日志里 vault-read 已加载，飞书 23:39 重连。
+- 测试：本机 `hermes -z` 一次性会话问 5 题（批 1 里答得差的 2、5、7、10，加一道新题“同事的改流程方案该不该直接采纳”），结果在 `evidence/M4-B3-20261026/selftest.md`，工具调用从 `state.db` 回读：**5 题都先读了 vault 技能，再用 vault-read 搜索和读页**，回复都给了路径（个人上下文题还给了小节名或 P 编号）。第 2 题不再排序，改成“Vault 写着没有优先级名单，你给我每个项目的情况我帮你分档，你来定”；第 5 题读到了有效卡片；第 7 题回到“预算和操作由人决定”；第 10 题点明时间预算未定。没有贴受限原文段落。这是 Claude 自测，不算 F3 验收。
+- 本轮新坑：无。
+- 发现，留到批 2（都在 Vault `.claude/scripts/vault_mcp.py`，改它要常浩确认）：① 它返回的提示还写着“不发往团队飞书、机械邪龙兽”，是 v1.5 之前的说法；技能里已写明私聊算本人入口，暂不影响作答。② 搜索只按目录排序、没有相关度：新题搜“建议”“方案”时，结果被个人上下文的命中占满，最对口的卡片「别人的建议先拆成他看到的问题和他给的方案…」没进前几条，退而用了「找根因…」那张。
+- 遗留：飞书私聊里现有的会话是重启前开的，系统提示可能还是旧 SOUL；批 5 正式验收前常浩先发 `/new` 开新会话。
+- 下一步：批 2 规则收口（等 10-30 周五例行跑完；顺带上面 ①②，以及 `get-index`、`思维模型库` 是否并入知识库）；批 4 就三处缺内容各问常浩一个问题。
+
 ## 2026-10-26 · M4 批 1：F3 基线
 
 - 常浩 23:16～23:33 在飞书私聊问了全部 10 个备选题（会话库消息 #1312～#1355）。Claude 逐题核对 Hermes 的工具调用和回答，基线表和小结在 `evidence/M4-20261026/批1-备选题.md`。
