@@ -1,6 +1,6 @@
 {
   "version": "v1 · 2026-10-26",
-  "note": "Hermes 只往 projects 里的活跃仓库派单，worktree 按所属主仓库匹配。inventory 是 M3 B1 盘点的其余仓库，只供查去留，不派单、不现查进展。GitHub 统一用 Natsukashii1997（原 abdoulaziznafiou03-creator，同一账号改名）；github 为 null 的在 M3 批 3 建私有远端。",
+  "note": "Hermes 只往 projects 里的活跃仓库派单，worktree 按所属主仓库匹配。inventory 是 M3 B1 盘点的其余仓库，只供查去留，不派单、不现查进展。GitHub 统一用 Natsukashii1997（原 abdoulaziznafiou03-creator，同一账号改名）；M3 批 3（2026-10-26）起 5 个活跃项目都有私有远端，默认分支 main，只允许 squash 合并。",
   "projects": [
     {
       "id": "work-desk",
@@ -18,7 +18,7 @@
       "write_allowed": true,
       "notes": "正式服务 5280 由 launchd 常驻；发布只能在常浩同意后，在 main 执行 scripts/release-app.sh。测试自动用临时数据目录，不碰 data/。",
       "category": "活跃",
-      "github": null
+      "github": "Natsukashii1997/work-desk"
     },
     {
       "id": "personal-ai-workbench",
@@ -55,7 +55,7 @@
       "write_allowed": true,
       "notes": "Claude 和 Codex 共用的全局 LESSONS 与 project-starter。改 LESSONS 只出提案，常浩批准才写。",
       "category": "活跃",
-      "github": null
+      "github": "Natsukashii1997/agent-kit"
     },
     {
       "id": "github-center",
@@ -65,12 +65,12 @@
         "GitHub 快速中心"
       ],
       "path": "~/Documents/ChatGPT/个人/work/github-center",
-      "main": "codex/bootstrap",
+      "main": "main",
       "agents": "AGENTS.md",
       "test": "npm test",
       "default_worker": null,
       "write_allowed": true,
-      "notes": "远端默认分支是 codex/bootstrap，当前检出 claude/v1；M3 批 3 建 main 指向 claude/v1 并改默认分支（M3-Q6）。远端账号就是 Natsukashii1997，不用迁。",
+      "notes": "M3 批 3 建了 main（指向 claude/v1），远端默认分支已改成 main；codex/bootstrap、claude/v1 保留，主目录仍检出 claude/v1。",
       "category": "活跃",
       "github": "Natsukashii1997/github-center"
     },
@@ -90,7 +90,7 @@
       "write_allowed": true,
       "notes": "本项目。改了脚本和技能要同步到安装位置（见 AGENTS.md）。",
       "category": "活跃",
-      "github": null
+      "github": "Natsukashii1997/digital-twin"
     }
   ],
   "categories": {
