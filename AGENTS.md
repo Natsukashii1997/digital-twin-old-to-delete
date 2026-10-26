@@ -20,10 +20,27 @@ hermes/
     vault/             关于常浩的判断类问题先查 Vault（F3，用 MCP vault-read）
   prompts/             定时任务等用的提示词
   samples/             样稿
+docs/agents/           Matt Pocock 技能读的约定：issue 看板、分流标签、领域文档
 ops/
   health_check.py      每日巡检（源文件）；安装副本在 ~/Library/Application Support/DigitalTwin/bin/
   cn.digital-twin.health.plist  巡检 launchd 配置的副本
 ```
+
+## Agent skills
+
+开发流程用 Matt Pocock skills（`~/.agents/skills/`）：大活走 `to-spec` → `to-tickets` → `implement` / `tdd` → `code-review` → PR；小改（一张 issue、一天内做完）跳过 `to-spec`。Claude 用 `/技能名`，Codex 用 `$技能名`；这几个技能只在点名时加载，不会自动触发。
+
+### Issue tracker
+
+需求、规格与任务用本仓库 GitHub Issues。见 `docs/agents/issue-tracker.md`。
+
+### Triage labels
+
+五个默认分流标签。见 `docs/agents/triage-labels.md`。
+
+### Domain docs
+
+single-context：根目录 `GLOSSARY.md` 与 `docs/adr/`，用到时再建。见 `docs/agents/domain.md`。
 
 ## 规则
 
